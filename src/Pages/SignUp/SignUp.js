@@ -6,6 +6,7 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const SignUp = () => {
     const {createUser} = useContext(AuthContext);
+    
     const handleSignUp = event =>{
         event.preventDefault();
         const form = event.target;
@@ -16,6 +17,7 @@ const SignUp = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            form.reset()
         })
         .catch(err => console.error(err));
     }
@@ -26,7 +28,7 @@ const SignUp = () => {
                 <div className="text-center lg:text-left">
                     <img className='w-3/4' src={img} alt="" />
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-20">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-10">
                     <h1 className="text-5xl text-center font-bold">Sign Up</h1>
                     <form onSubmit={handleSignUp} className="card-body">
                         <div className="form-control">
@@ -45,7 +47,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="text" name='password' placeholder="password" className="input input-bordered" required/>
+                            <input type="password" name='password' placeholder="password" className="input input-bordered" required/>
                             
                         </div>
                         <div className="form-control mt-6">
